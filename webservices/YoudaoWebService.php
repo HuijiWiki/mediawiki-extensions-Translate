@@ -13,6 +13,9 @@
  * @since 2013-01-01
  */
 class YoudaoWebService extends TranslationWebService {
+	public function getType() {
+		return 'mt';
+	}
 	protected function mapCode( $code ) {
 		$map = array(
 			'zh-hant' => 'zh',
