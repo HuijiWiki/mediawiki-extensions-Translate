@@ -13,6 +13,34 @@
  * @since 2013-01-01
  */
 class YoudaoWebService extends TranslationWebService {
+	public function getType() {
+		return 'mt';
+	}
+        /**
+         * Some mangling that tries to keep some parts of the message unmangled
+         * by the translation service. Most of them support either class=notranslate
+         * or translate=no.
+         */
+        protected function wrapUntranslatable( $text ) {
+                $text = str_replace( "\n", "ΔNΔ", $text );
+                $pattern = '~%[^% ]+%|\$\d|{VAR:[^}]+}|{?{(PLURAL|GRAMMAR|GENDER):[^|]+\||%(\d\$)?[sd]~';
+                $wrap = '<span class="notranslate" translate="no">\0</span>';
+                $text = preg_replace( $pattern, $wrap, $text );
+
+                return $text;
+        }
+
+        /**
+         * Undo the hopyfully untouched mangling done by wrapUntranslatable.
+         */
+        protected function unwrapUntranslatable( $text ) {
+                $text = str_replace( 'ΔNΔ', "\n", $text );
+                $pattern = '~<span class="notranslate" translate="no">(.*?)</span>~';
+                $text = preg_replace( $pattern, '\1', $text );
+
+                return $text;
+        }
+
 	protected function mapCode( $code ) {
 		$map = array(
 			'zh-hant' => 'zh',
