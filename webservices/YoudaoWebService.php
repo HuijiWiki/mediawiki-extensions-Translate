@@ -10,7 +10,7 @@
  * Implements support for youdao dict.
  * @see http://fanyi.youdao.com/openapi?path=data-mode
  * @ingroup TranslationWebService
- * @since 2013-01-01
+ * @since 2015-10-20
  */
 class YoudaoWebService extends TranslationWebService {
 	public function getType() {
