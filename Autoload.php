@@ -304,6 +304,7 @@ $al['TranslationWebService'] = "$dir/webservices/TranslationWebService.php";
 $al['TranslationWebServiceException'] =
 	"$dir/webservices/TranslationWebServiceException.php";
 $al['YandexWebService'] = "$dir/webservices/YandexWebService.php";
+$al['YoudaoWebService'] = "$dir/webservices/YoudaoWebService.php";
 /**@}*/
 
 /**
